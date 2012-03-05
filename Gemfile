@@ -8,7 +8,7 @@ gem 'rails', '3.1.1'
 # Heroku needed gems
 gem 'heroku'
 gem 'execjs'
-gem 'therubyracer'
+#gem 'therubyracer'
 
 # Heroku does not support SQLite, use PostgreSQL instead
 group :production do
