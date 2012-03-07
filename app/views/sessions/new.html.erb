@@ -1,14 +1,31 @@
 <h1>Log in</h1>
 
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
-<% end %>
+<%= form_tag sessions_path, class: 'form-horizontal' do %>
+  <fieldset>
+    <div class='control-group'>
+      <label class='control-label' for="email">Email</label>
+      <div class='controls'>
+        <%= text_field_tag :email, params[:email] %>
+      </div>
+    </div>
+  </fieldset>
 
+  <fieldset>
+    <div class='control-group'>
+      <label class='control-label' for="password">Password</label>
+      <div class='controls'>
+        <%= password_field_tag :password %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class='controls'>
+      <%= submit_tag "Log in", class: 'btn-primary' %>
+      or
+      <%= link_to "Cancel", root_path %>
+    </div>
+  </fieldset>
+
+<% end %>
+  
