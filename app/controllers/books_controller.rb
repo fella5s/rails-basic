@@ -20,7 +20,7 @@ class BooksController < ApplicationController
   end
   
   def show
-    @book_reservation = @book.reservation
+    @book_reservation = @book.reservation 
   end
   
   def new
