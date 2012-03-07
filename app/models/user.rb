@@ -24,5 +24,9 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end  
+   
+  def is_admin?
+    self.email == "ypthemc@gmail.com"
+  end
     
 end

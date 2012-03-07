@@ -16,13 +16,20 @@
 	<%= @book.description %>
 </p>
 
+
+<% if !@book_reservation.nil? && @book_reservation.email == current_user.email || current_user.is_admin?%>
+  <span id="reservation-links">
+    <%= render partial: "reservation_links", locals: {book: @book, reservation: @book_reservation} %>
+  </span>
+<% end %>
+
+<% if !current_user.nil? && current_user.is_admin? %>
+
 <%= link_to "Edit", edit_book_path(@book), class: 'btn' %>
 
-<span id="reservation-links">
-  <%= render partial: "reservation_links", locals: {book: @book, reservation: @book_reservation} %>
-</span>
-
 <%= link_to "Delete", book_path, method: :delete, class: 'btn btn-danger' %>
+
+<% end %>
 
 <p>
   <%= link_to "Back to list", books_path %>
