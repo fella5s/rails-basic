@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Signed in!"
+      redirect_to root_url, :notice => "Account created!"
     else
       render "new"
     end
