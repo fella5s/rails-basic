@@ -17,4 +17,10 @@ Library::Application.routes.draw do
   
   root :to => 'books#index'
 
+  get "log_out" => "sessions#destroy", as => "log_out"
+  get "log_in" => "", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  resources :users
+  recources :sessions
+  
 end
