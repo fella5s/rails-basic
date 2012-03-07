@@ -1,9 +1,5 @@
 Library::Application.routes.draw do
   
-  get "sessions/new"
-
-  get "users/new"
-
   resources :books do
     collection do
       get :search
@@ -14,13 +10,13 @@ Library::Application.routes.draw do
       end
     end
   end
-  
-  root :to => 'books#index'
-
-  get "log_out" => "sessions#destroy", as => "log_out"
-  get "log_in" => "", :as => "log_in"
+ 
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
   resources :users
-  recources :sessions
+  resources :sessions
+  
+  root :to => 'books#index'
   
 end

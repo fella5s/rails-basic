@@ -1,0 +1,48 @@
+<%= form_for @user do |f| %>
+  
+  <% unless @user.errors.empty? %>
+    <div class='alert alert-block alert-error'>
+      <h2 class='alert-heading'>Failed to create account</h2>
+      <% @user.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class='control-group'>
+      <label class='control-label' for="email">Email</label>
+      <div class='controls'>
+        <%= f.text_field :email %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class='control-group'>
+      <label class='control-label' for="password">Password</label>
+      <div class='controls'>
+        <%= f.password_field :password %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class='control-group'>
+      <label class='control-label' for="password_confirmation">Retype pwd</label>
+      <div class='controls'>
+        <%= f.password_field :password_confirmation %>
+       </div>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <div class='controls'>
+      <%= f.submit "Create account", class: 'btn-primary' %>
+      or
+      <%= link_to "Cancel", root_path %>
+    </div>
+  </fieldset>
+  
+  
+<% end %>
