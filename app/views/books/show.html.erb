@@ -19,7 +19,7 @@
 
 
 
-<% if @book_reservation.nil? || current_user && @book_reservation.email == current_user.email %>
+<% if @book_reservation.nil? && logged_in? || current_user && @book_reservation.email == current_user.email %>
   <span id="reservation-links">
     <%= render partial: "reservation_links", locals: {book: @book, reservation: @book_reservation} %>
   </span>

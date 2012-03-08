@@ -1,11 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+<% self.password_salt = BCrypt::Engine.generate_salt
+   self.password_hash = BCrypt::Engine.hash_secret("password", password_salt) %>
+   
 one:
-  email: MyString
+  email: admin@admin.fi
   password_hash: MyString
   password_salt: MyString
+  is_admin: 1
 
 two:
-  email: MyString
+  email: user@user.fi
   password_hash: MyString
   password_salt: MyString
+  is_admin: 0

@@ -1,16 +1,21 @@
-  <dl>
+<dl>
+<% if @users.size>1 %>
   <% @users.each do |user| %>
-    <dt><%= user.email %></dt>
-    <dd>
-      <% if user.is_admin? %>
-        Admin
-      <% else %>
+    <% if current_user != user %>
+      <dt><%= user.email %></dt>
+      <dd>
         <span class="btn-group">
-          <a href="#" class="btn">Grant admin rights</a>
+          <% if user.is_admin? %>
+            <a href="#" class="btn">Remove from admins</a>
+          <% else %>
+            <a href="#" class="btn">Make admin</a>
+          <% end %>
           <%= link_to "Delete", user_path(user), method: :delete, class: 'btn btn-danger' %>
         </span>
-      <% end %>
-    </dd>
-    
+      </dd>    
+    <% end %>
   <% end %>
-  </dl>
+<% else %>
+  <dt> No other users :( </dt>
+<% end %>
+</dl>
