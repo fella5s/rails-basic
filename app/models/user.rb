@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   
+  before_create :not_admin
+  
   def self.authenticate(email, password)
     user = find_by_email(email)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
@@ -27,8 +29,12 @@ class User < ActiveRecord::Base
     end
   end  
    
+  def not_admin
+    self.is_admin ||=false
+  end
+   
   def is_admin?
-    self.email == "ypthemc@gmail.com"
+    self.is_admin
   end
     
 end
