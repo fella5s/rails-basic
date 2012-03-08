@@ -17,6 +17,12 @@
               <%= image_tag "books.png", width: '20px' %>  
               Library
             <% end %>
+
+            <% if current_user && current_user.is_admin? %>
+              <%= link_to users_path, class: 'brand' do %>
+                Users
+              <% end %>            
+            <% end %>
           
           <span class="brand" style="float: right; margin-right:20px;">
           <% if current_user %>
