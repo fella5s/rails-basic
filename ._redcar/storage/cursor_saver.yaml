@@ -1,0 +1,63 @@
+--- 
+cursor_positions: 
+  - :path: test/functional/site_controller_test.rb
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 20:15:01.390000 +02:00
+  - :path: test/functional/reservations_controller_test.rb
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 20:15:01.389000 +02:00
+  - :path: test/functional/sessions_controller_test.rb
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 20:15:01.389000 +02:00
+  - :path: db/schema.rb
+    :cursor_offset: 995
+    :timestamp: 2012-03-08 20:21:53.280000 +02:00
+  - :path: db/migrate/20120307182840_create_users.rb
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 20:15:01.367000 +02:00
+  - :path: test/fixtures/reservations.yml
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 20:15:01.384000 +02:00
+  - :path: test/unit/reservation_test.rb
+    :cursor_offset: 680
+    :timestamp: 2012-03-08 20:15:01.434000 +02:00
+  - :path: test/fixtures/books.yml
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 20:15:01.383000 +02:00
+  - :path: 
+    :cursor_offset: 562
+    :timestamp: 2012-03-08 20:15:01.228000 +02:00
+  - :path: test/unit/isbn_validator_test.rb
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 20:15:01.433000 +02:00
+  - :path: db/test.sqlite3
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 22:37:00.184000 +02:00
+  - :path: app/controllers/users_controller.rb
+    :cursor_offset: 0
+    :timestamp: 2012-03-08 23:00:14.412000 +02:00
+  - :path: app/controllers/books_controller.rb
+    :cursor_offset: 365
+    :timestamp: 2012-03-08 20:15:01.247000 +02:00
+  - :path: test/functional/books_controller_test.rb
+    :cursor_offset: 1878
+    :timestamp: 2012-03-08 20:15:01.387000 +02:00
+  - :path: test/functional/users_controller_test.rb
+    :cursor_offset: 622
+    :timestamp: 2012-03-08 22:44:31.384000 +02:00
+  - :path: app/models/user.rb
+    :cursor_offset: 205
+    :timestamp: 2012-03-08 20:15:01.259000 +02:00
+  - :path: test/unit/user_test.rb
+    :cursor_offset: 419
+    :timestamp: 2012-03-08 22:56:11.648000 +02:00
+  - :path: test/fixtures/users.yml
+    :cursor_offset: 279
+    :timestamp: 2012-03-08 23:04:13.412000 +02:00
+  - :path: app/models/book.rb
+    :cursor_offset: 337
+    :timestamp: 2012-03-08 20:15:01.258000 +02:00
+  - :path: test/unit/book_test.rb
+    :cursor_offset: 63
+    :timestamp: 2012-03-08 20:15:01.396000 +02:00
+files_to_retain: 0
