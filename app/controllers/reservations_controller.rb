@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+
+  before_filter :logged_in?
   
   def new
     @book = Book.find(params[:book_id])

@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
   
   before_filter :find_book, only: [:show, :edit, :update, :destroy]
-
+  before_filter :logged_in?, :is_admin?, only: [:new, :edit, :create, :update , :destroy]
+  
   def index
     @books = Book.all
     respond_to do |format|
