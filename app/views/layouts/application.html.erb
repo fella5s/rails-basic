@@ -20,7 +20,7 @@
           
           <span class="brand" style="float: right; margin-right:20px;">
           <% if current_user %>
-            Logged in as <%= current_user.email %>, <%= link_to "Log out", log_out_path %>
+            Welcome <%= current_user.email %>, <%= link_to "Log out", log_out_path %>
           <% else %>          
             <%= link_to "Login", log_in_path %> or 
             <%= link_to "Register", sign_up_path %>         
