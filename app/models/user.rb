@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :is_admin
   
   attr_accessor :password
+  
   before_save :encrypt_password
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
+  
   validates_presence_of :email
   validates_uniqueness_of :email
-  
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   
   before_create :not_admin
@@ -30,7 +31,7 @@ class User < ActiveRecord::Base
   end  
    
   def not_admin
-    self.is_admin ||=false
+    self.is_admin ||= 0
   end
    
   def is_admin?
