@@ -7,7 +7,7 @@
       <% else %>
         <span class="btn-group">
           <a href="#" class="btn">Grant admin rights</a>
-          <a href="#" class="btn btn-danger">Delete</a>
+          <%= link_to "Delete", user_path(user), method: :delete, class: 'btn btn-danger' %>
         </span>
       <% end %>
     </dd>

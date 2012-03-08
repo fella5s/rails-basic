@@ -21,12 +21,17 @@ class UsersController < ApplicationController
   end
   
   def update
-    
     if current_user.update_attributes(params[:user])
       flash[:notice] = "Password saved"
       redirect_to :root
     else
       render action: :show
     end
+  end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:notice] = "User deleted"
+    redirect_to root_url
   end
 end
