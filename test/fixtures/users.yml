@@ -13,3 +13,15 @@ user:
   password_salt: <%= salt %>
   password_hash: <%= BCrypt::Engine.hash_secret("user", salt) %>
   is_admin: 0
+
+admin2:
+  email: admin2@admin.fi
+  password_salt: <%= salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret("admin", salt) %>
+  is_admin: 1
+
+user2:
+  email: user2@user.fi
+  password_salt: <%= salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret("user", salt) %>
+  is_admin: 0

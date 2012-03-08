@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  
+  before_filter :logged_in?, :is_admin?, only: [:index, :destroy]
+  
   def new
     @user = User.new
   end
   
   def index
-    @users = User.all
+    @users = User.order("is_admin desc").all
   end
   
   def show
