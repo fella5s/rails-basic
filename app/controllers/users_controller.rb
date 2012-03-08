@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+  
+  def show
+    @user=current_user
+  end
 
   def create
     @user = User.new(params[:user])
@@ -13,6 +17,16 @@ class UsersController < ApplicationController
       redirect_to root_url, :notice => "Account created!"
     else
       render "new"
+    end
+  end
+  
+  def update
+    
+    if current_user.update_attributes(params[:user])
+      flash[:notice] = "Password saved"
+      redirect_to :root
+    else
+      render action: :show
     end
   end
 end

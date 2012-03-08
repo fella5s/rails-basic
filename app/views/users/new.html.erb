@@ -1,3 +1,35 @@
 <h1>Create account</h1>
 
-<%= render partial: 'form' %>
+
+<%= form_for @user, html: { class: 'form-horizontal' } do |f| %>
+  
+  <% unless @user.errors.empty? %>
+    <div class='alert alert-block alert-error'>
+      <h2 class='alert-heading'>Failed to create account</h2>
+      <% @user.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class='control-group'>
+      <label class='control-label' for="email">Email</label>
+      <div class='controls'>
+        <%= f.text_field :email %>
+      </div>
+    </div>
+  </fieldset>
+
+  
+  <%= render partial: 'password', locals: {f: f} %>
+  <fieldset>
+    <div class='controls'>
+      <%= f.submit "Create account", class: 'btn-primary' %>
+      or
+      <%= link_to "Cancel", root_path %>
+    </div>
+  </fieldset>
+  
+<% end %>
+

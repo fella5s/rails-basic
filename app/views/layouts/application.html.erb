@@ -19,7 +19,7 @@
           <% end %>
 
           <% if current_user %>
-            <%= link_to user_path, class: 'brand' do %>
+            <%= link_to user_path(current_user), class: 'brand' do %>
               Profile
             <% end %>
             <% if current_user.is_admin? %>

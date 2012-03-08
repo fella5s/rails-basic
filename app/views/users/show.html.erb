@@ -1,0 +1,15 @@
+<h1>Update password</h1>
+
+<%= form_for @user, html: { class: 'form-horizontal' } do |f| %>
+  
+  
+  <%= render partial: 'password', locals: {f: f} %>
+  <fieldset>
+    <div class='controls'>
+      <%= f.submit "Update", class: 'btn-primary' %>
+      or
+      <%= link_to "Cancel", root_path %>
+    </div>
+  </fieldset>
+  
+<% end %>
