@@ -35,11 +35,15 @@
           <li class="nav-header">Library</li>
           <li><a href="#"><i class="icon-home"></i> Home</a></li>
           <li><a href="#"><i class="icon-book"></i> Library</a></li>
-          <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
           
-          <li></li>
+          <% if current_user && current_user.is_admin? %>
+            <li>
+              <%= link_to new_book_path, do %>
+                <i class="icon-pencil"></i>Add a book
+              <% end %>
+            </li>
+          <% end %>
           
-
           <% if current_user %>
             <li class="nav-header">Manage</li>
             <li>

@@ -1,9 +1,3 @@
-<% if current_user && current_user.is_admin? %>
-<p>
-  <%= link_to "Add a book", new_book_path, class: 'btn' %>
-</p>
-<% end %>
-
 <% if @books.size > 0 %>
   <dl>
   <% @books.each do |book| %>
