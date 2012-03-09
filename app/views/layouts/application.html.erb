@@ -14,10 +14,8 @@
       <div class="navbar-inner">
         <div class="container">
           <%= link_to root_path, class: 'brand' do %>
-            <%= image_tag "books.png", width: '20px' %>  
-            Library
+            <%= image_tag "books.png", width: '20px' %>Library
           <% end %>
-
           <span class="brand" style="float: right; margin-right:20px;">
           <% if current_user %>
             Welcome <%= current_user.email %>, <%= link_to "Log out", log_out_path %>
@@ -38,7 +36,7 @@
           
           <% if current_user && current_user.is_admin? %>
             <li>
-              <%= link_to new_book_path, do %>
+              <%= link_to new_book_path, class: 'brand' do %>
                 <i class="icon-pencil"></i>Add a book
               <% end %>
             </li>
@@ -47,15 +45,17 @@
           <% if current_user %>
             <li class="nav-header">Manage</li>
             <li>
-              <%= link_to user_path(current_user), do %>
+              <%= link_to user_path(current_user), class: 'brand' do %>
                 <i class="icon-cog"></i> Change pwd
               <% end %>
             </li>
   
             <% if current_user.is_admin? %>
-              <%= link_to users_path, class: 'brand' do %>
-                <i class="icon-user"></i> Manage users
-              <% end %>
+              <li>
+                <%= link_to users_path, class: 'brand' do %>
+                  <i class="icon-user"></i> Manage users
+                <% end %>
+              </li>
             <% end %>
             
           <% else %>
