@@ -31,8 +31,11 @@
       <div class="well" style="padding: 8px 0;">
         <ul class="nav nav-list">
           <li class="nav-header">Library</li>
-          <li><a href="#"><i class="icon-home"></i> Home</a></li>
-          <li><a href="#"><i class="icon-book"></i> Library</a></li>
+          <li>
+		   <%= link_to root_path, class: 'brand' do %>
+            <i class="icon-book"></i>Library
+          <% end %> 
+		  </li>
           
           <% if current_user && current_user.is_admin? %>
             <li>
