@@ -24,6 +24,19 @@ class UsersController < ApplicationController
     end
   end
   
+  def toggle_permissions
+  
+    user = User.find(params[:format])
+    user.is_admin = user.is_admin? ? 0 : 1
+ 
+    if user.save
+      redirect_to users_path, :notice => user.is_admin? ? "Account upgraded!" : "Account downgraded!"
+    else
+      flash[:error] = "Could not save account!"
+    end
+  
+  end
+  
   def update
     if current_user.update_attributes(params[:user])
       flash[:notice] = "Password saved"

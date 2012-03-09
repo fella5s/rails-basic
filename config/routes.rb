@@ -18,6 +18,8 @@ Library::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
   
+  get "toggle_permissions" => "users#toggle_permissions", :as => "toggle_permissions"
+  
   root :to => 'books#index'
   
 end
