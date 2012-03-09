@@ -21,10 +21,12 @@ class UsersControllerTest < ActionController::TestCase
     assert_template :new
   end
   
-  test "destroy user" do
-    user = users(:user)
+  test "admin can destroy user" do
+    user = users(:admin)
+    user2 = users(:user2)
+    session[:user_id] = user.id
     assert_difference("User.count", -1) do
-      delete :destroy, id: user.id
+      delete :destroy, id: user2.id
       assert_response :redirect
       assert_redirected_to users_path
       assert flash[:notice]

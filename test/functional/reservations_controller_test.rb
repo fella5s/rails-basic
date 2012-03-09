@@ -9,6 +9,8 @@ class ReservationsControllerTest < ActionController::TestCase
   end
   
   test "new reservation" do
+    user = users(:user)
+    session[:user_id] = user.id
     get :new, book_id: @book.id
     assert_response :success
     assert_equal @book, assigns(:book)
@@ -17,6 +19,8 @@ class ReservationsControllerTest < ActionController::TestCase
   end
   
   test "create reservation with valid parameters" do
+    user = users(:user)
+    session[:user_id] = user.id
     assert_difference("Reservation.count", +1) do
       post :create, book_id: @book.id, reservation: {email: 'library@eficode.com'}
       assert_response :redirect
@@ -26,6 +30,8 @@ class ReservationsControllerTest < ActionController::TestCase
   end
 
   test "create reservation with invalid parameters" do
+    user = users(:user)
+    session[:user_id] = user.id
     post :create, book_id: @book.id, reservation: {email: 'invalid'}
     assert_response :success
     assert assigns(:reservation)
@@ -33,7 +39,19 @@ class ReservationsControllerTest < ActionController::TestCase
     assert_template :new
   end
   
-  test "free reservation" do
+  test "Admin can free reservation" do
+    user = users(:admin)
+    session[:user_id] = user.id
+    put :free, book_id: @reserved_book.id, id: @reservation.id
+    assert_response :redirect
+    assert_redirected_to book_path(@reserved_book)
+    assert_equal 'free', assigns(:reservation).state
+    assert flash[:notice]
+  end
+  
+   test "User can free reservation" do
+    user = users(:user)
+    session[:user_id] = user.id
     put :free, book_id: @reserved_book.id, id: @reservation.id
     assert_response :redirect
     assert_redirected_to book_path(@reserved_book)

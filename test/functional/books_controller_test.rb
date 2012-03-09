@@ -14,6 +14,8 @@ class BooksControllerTest < ActionController::TestCase
   end
   
   test "show book" do
+    user = users(:user)
+    session[:user_id] = user.id
     get :show, id: books(:steppenwolf).id
 
     assert_response :success
@@ -22,20 +24,26 @@ class BooksControllerTest < ActionController::TestCase
   end
   
   test "new book" do
+    user = users(:admin)
+    session[:user_id] = user.id
     get :new
     assert_response :success
     assert assigns(:book)
     assert assigns(:book).new_record?
   end
   
-  test "create book with valid parameters" do
+  test "Admin can create book with valid parameters" do
+    user = users(:admin)
+    session[:user_id] = user.id
     post :create, book: {title: 'Programming Your Home', authors: 'Mike Riley', isbn: '978-1-93435-690-6'}
     assert_response :redirect
     assert_redirected_to books_path
     assert flash[:notice] 
   end
 
-  test "create book with invalid parameters" do
+  test "Admin can not create book with invalid parameters" do
+    user = users(:admin)
+    session[:user_id] = user.id
     post :create, book: {title: 'No such book'}
     assert_response :success
     assert assigns(:book)
@@ -43,7 +51,9 @@ class BooksControllerTest < ActionController::TestCase
     assert_template :new
   end
   
-  test "edit book" do
+  test "Admin can edit book" do
+    user = users(:admin)
+    session[:user_id] = user.id
     get :edit, id: books(:steppenwolf).id
 
     assert_response :success
@@ -51,7 +61,9 @@ class BooksControllerTest < ActionController::TestCase
     assert_equal assigns(:book), books(:steppenwolf)
   end
 
-  test "update book with valid parameters" do
+  test "Admin can update book with valid parameters" do
+    user = users(:admin)
+    session[:user_id] = user.id
     put :update, id: books(:steppenwolf).id,
                  book: {title: 'Programming Your Home',
                         authors: 'Mike Riley',
@@ -62,7 +74,9 @@ class BooksControllerTest < ActionController::TestCase
     assert flash[:notice] 
   end
   
-  test "update book with invalid parameters" do
+  test "Admin can not update book with invalid parameters" do
+    user = users(:admin)
+    session[:user_id] = user.id
     put :update, id: books(:steppenwolf).id,
                  book: {title: 'Some garbage', isbn: 'invalid'}
     assert_response :success
@@ -71,7 +85,9 @@ class BooksControllerTest < ActionController::TestCase
     assert_template :edit
   end
   
-  test "delete book" do
+  test "Admin can delete book" do
+    user = users(:admin)
+    session[:user_id] = user.id
     book = books(:steppenwolf)
     assert_difference("Book.count", -1) do
       delete :destroy, id: book.id
