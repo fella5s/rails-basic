@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :logged_in?, :is_admin?, only: [:index, :destroy]
+  before_filter :logged_in?, :is_admin?, only: [:index, :destroy, :toggle_permissions]
   
   def new
     @user = User.new
