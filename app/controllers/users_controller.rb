@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   end
   
   def toggle_permissions
-  
     user = User.find(params[:format])
     user.is_admin = user.is_admin? ? 0 : 1
  
@@ -34,7 +33,6 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Could not save account!"
     end
-  
   end
   
   def update
