@@ -1,0 +1,9 @@
+<%= form_tag search_books_path, method: :get do %>
+  <span><%= text_field_tag :query, params[:query] || '' %>
+  <%= submit_tag 'Go', class: 'btn-primary' %></span>
+  <div>
+    <%= query_by_radio_tag :title %>
+    <%= query_by_radio_tag :isbn %>
+    <%= query_by_radio_tag :authors %>
+  </div>
+<% end %>

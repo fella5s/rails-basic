@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   
   def logged_in?
     unless session[:user_id]
-      render :file => "public/401.html", :status => :unauthorized
+      render :file => "public/401.html", :status => :unauthorized, :layout => false
       return false
     else
       return true
@@ -23,10 +23,11 @@ class ApplicationController < ActionController::Base
   def is_admin?
     unless current_user.is_admin?
       session[:user_id] = nil
-      render :file => "public/401.html", :status => :unauthorized
+      render :file => "public/401.html", :status => :unauthorized, :layout => false
       return false
     else
       return true
-    end  end
+    end
+  end
   
 end

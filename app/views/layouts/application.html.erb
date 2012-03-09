@@ -18,17 +18,6 @@
             Library
           <% end %>
 
-          <% if current_user %>
-            <%= link_to user_path(current_user), class: 'brand' do %>
-              Profile
-            <% end %>
-            <% if current_user.is_admin? %>
-              <%= link_to users_path, class: 'brand' do %>
-                Users
-              <% end %>
-            <% end %>
-          <% end %>
-          
           <span class="brand" style="float: right; margin-right:20px;">
           <% if current_user %>
             Welcome <%= current_user.email %>, <%= link_to "Log out", log_out_path %>
@@ -40,14 +29,57 @@
         </div>
       </div>
     </div>
+    <div class="span4">
+      <div class="well" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+          <li class="nav-header">Library</li>
+          <li><a href="#"><i class="icon-home"></i> Home</a></li>
+          <li><a href="#"><i class="icon-book"></i> Library</a></li>
+          <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+          
+          <li></li>
+          
+
+          <% if current_user %>
+            <li class="nav-header">Manage</li>
+            <li>
+              <%= link_to user_path(current_user), do %>
+                <i class="icon-cog"></i> Change pwd
+              <% end %>
+            </li>
+  
+            <% if current_user.is_admin? %>
+              <%= link_to users_path, class: 'brand' do %>
+                <i class="icon-user"></i> Manage users
+              <% end %>
+            <% end %>
+            
+          <% else %>
+            <li class="nav-header">Not logged in</li>
+            <li><span><i class="icon-cog"></i><%= link_to "Login", log_in_path %> or <%= link_to "Register", sign_up_path %></span></li>         
+          <% end %>
+          
+          
+
+          
+          
+          <li class="nav-header">Search</li>
+             <%= render :partial => "books/search" %>
+          </ul>
+      </div>
+    </div>
+    
+    <div class="span7">
   
     <% flash.each do |name,msg| %>
       <div class="<%= flash_class(name)%>">
         <%= msg %>
       </div>
     <% end %>
+    
     <%= yield %>
   
+    </div>
   </div>
 
 </body>
