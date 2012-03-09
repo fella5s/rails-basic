@@ -41,6 +41,13 @@ class BooksControllerTest < ActionController::TestCase
     assert flash[:notice] 
   end
 
+  test "User can not create book with valid parameters - unathorized" do
+    user = users(:user)
+    session[:user_id] = user.id
+    post :create, book: {title: 'Programming Your Home', authors: 'Mike Riley', isbn: '978-1-93435-690-6'}
+    assert_response 401 
+  end
+
   test "Admin can not create book with invalid parameters" do
     user = users(:admin)
     session[:user_id] = user.id
@@ -59,6 +66,13 @@ class BooksControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:book)
     assert_equal assigns(:book), books(:steppenwolf)
+  end
+
+  test "User can not edit book" do
+    user = users(:user)
+    session[:user_id] = user.id
+    get :edit, id: books(:steppenwolf).id
+    assert_response 401
   end
 
   test "Admin can update book with valid parameters" do
@@ -95,6 +109,14 @@ class BooksControllerTest < ActionController::TestCase
       assert_redirected_to books_path
       assert flash[:notice]
     end
+  end
+  
+  test "User can not delete a book" do
+    user = users(:user)
+    session[:user_id] = user.id
+    book = books(:steppenwolf)
+    delete :destroy, id: book.id
+    assert_response 401
   end
   
   test "search by title" do
