@@ -21,8 +21,8 @@ class UsersControllerTest < ActionController::TestCase
     assert_template :new
   end
   
-  test "destroy user" do
-    user = users(:user)
+  test "admin can destroy user" do
+    user = users(:admin)
     assert_difference("User.count", -1) do
       delete :destroy, id: user.id
       assert_response :redirect

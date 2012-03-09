@@ -20,4 +20,9 @@ class UserTest < ActiveSupport::TestCase
     assert other_user.invalid?
   end
   
+  test "a user without password should not be valid" do
+    user = User.new(email: 'user@mail.com', password: ' ', password_confirmation: ' ')
+    assert user.invalid?
+  end
+
 end
