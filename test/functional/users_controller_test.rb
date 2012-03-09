@@ -13,7 +13,7 @@ class UsersControllerTest < ActionController::TestCase
     assert flash[:notice] 
   end
   
-    test "create user with invalid parameters" do
+  test "create user with invalid parameters" do
     post :create, user: {email: 'email'}
     assert_response :success
     assert assigns(:user)
@@ -33,4 +33,16 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
   
+  test "Updating user - new password" do
+    user = users(:user)
+    session[:user_id] = user.id
+    put :update, id: user.id,
+                 user: {password: 'newpwd',
+                        password_confirmation: 'newpwd'}
+                     
+    assert_response :redirect
+    assert_redirected_to root_url
+    assert flash[:notice] 
+  end
+
 end
