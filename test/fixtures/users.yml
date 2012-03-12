@@ -5,23 +5,53 @@
 admin:
   email: admin@admin.fi
   password_salt: <%= salt %>
-  password_hash: <%= BCrypt::Engine.hash_secret("admin", salt) %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
+  is_admin: 1
+
+admin2:
+  email: admin2@admin.fi
+  password_salt: <%= salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
   is_admin: 1
 
 user:
   email: user@user.fi
   password_salt: <%= salt %>
-  password_hash: <%= BCrypt::Engine.hash_secret("user", salt) %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
   is_admin: 0
-
-admin2:
-  email: admin2@admin.fi
-  password_salt: <%= salt %>
-  password_hash: <%= BCrypt::Engine.hash_secret("admin", salt) %>
-  is_admin: 1
 
 user2:
   email: user2@user.fi
   password_salt: <%= salt %>
-  password_hash: <%= BCrypt::Engine.hash_secret("user", salt) %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
+  is_admin: 0
+
+user3:
+  email: user3@user.fi
+  password_salt: <%= salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
+  is_admin: 0
+
+user4:
+  email: user4@user.fi
+  password_salt: <%= salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
+  is_admin: 0
+
+user5:
+  email: user5@user.fi
+  password_salt: <%= salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
+  is_admin: 0
+
+user6:
+  email: user6@user.fi
+  password_salt: <%= salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
+  is_admin: 0
+
+user7:
+  email: user7@user.fi
+  password_salt: <%= salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret("password", salt) %>
   is_admin: 0
