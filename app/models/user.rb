@@ -30,12 +30,14 @@ class User < ActiveRecord::Base
     end
   end  
    
-  def not_admin
-    self.is_admin ||= 0
-  end
-   
   def is_admin?
     self.is_admin
   end
+
+  private
+
+  def not_admin
+    self.is_admin ||= 0
+  end 
     
 end
